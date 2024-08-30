@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="Actividad3.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Sector motivador!!</title>
+</head>
+<body>
+<h1>¡BUSCA TU MOTIVACIÓN!</h1>
+<div id="app"></div>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/jsx">
+    const { useState } = React;
+
+    function FraseMotivacional() {
+        const [frase, setFrase] = useState("");
+
+        const frases = [
+            "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+            "Cree en ti mismo y todo será posible.",
+            "El futuro pertenece a aquellos que creen en la belleza de sus sueños.",
+            "Nunca es tarde para ser lo que podrías haber sido.",
+            "El único límite a nuestros logros de mañana está en nuestras dudas de hoy.",
+            "La vida es 10% lo que nos sucede y 90% cómo reaccionamos a ello.",
+            "La mejor manera de predecir el futuro es crearlo.",
+            "El fracaso es solo la oportunidad de comenzar de nuevo con más experiencia."
+        ];
+
+        function generarFrase() {
+            const indiceAleatorio = Math.floor(Math.random() * frases.length);
+            setFrase(frases[indiceAleatorio]);
+        }
+
+        return (
+            <div className="frase-motivacional">
+                <p>{frase ? `"${frase}"` : "HAZ CLICK EN EL BOTON DE ABAJO!!!."}</p>
+                <button onClick={generarFrase}>GENERA TU MOTIVACION</button>
+            </div>
+        );
+    }
+
+    const app = document.getElementById("app");
+    const root = ReactDOM.createRoot(app);
+
+    root.render(<FraseMotivacional />);
+</script>
+</body>
+</html>
